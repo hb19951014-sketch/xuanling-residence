@@ -1,0 +1,30 @@
+.floorplan-content{margin-top:3vh;min-height:0;flex:1}
+.floorplan-heading{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:2.5vh}
+.floorplan-heading .kicker{margin-bottom:1.4vh}
+.floorplan-heading .h1-zh{font-size:clamp(30px,3.3vw,58px);line-height:1.3}
+.floorplan-heading>p{font-size:12px;line-height:1.9;opacity:.6;margin:0 0 4px}
+.floorplan-pair{display:grid;grid-template-columns:1fr 1fr;gap:3vw}
+.floorplan-card{margin:0;min-width:0;border-top:1px solid var(--line);padding-top:1.6vh}
+.floorplan-card-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:1.5vh}
+.floorplan-card-heading h3{font:400 23px/1.5 var(--serif-zh);margin:0}.floorplan-card-heading .meta{font-size:9px;opacity:.6}
+.floorplan-card>button{border:0;padding:0;display:block;position:relative;width:100%;height:54vh;background:#fff;cursor:zoom-in;color:var(--ink)}
+.floorplan-card img{display:block;width:100%;height:100%;object-fit:contain}
+.floorplan-card>button>span{position:absolute;bottom:10px;right:12px;font-size:10px;padding:6px 8px;background:#f1eee7d9;opacity:.7}
+.floorplan-card>button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+#floorplan-dialog{position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;max-height:none;padding:0;margin:0;border:0;overflow:hidden;background:#f1eee7;color:#23372e}
+#floorplan-dialog[open]{display:flex;flex-direction:column}
+#floorplan-dialog button{font:inherit;color:inherit;background:transparent;border:0;cursor:pointer}
+#floorplan-dialog button:focus-visible{outline:2px solid #987747;outline-offset:-3px}
+#floorplan-dialog header{display:flex;justify-content:space-between;align-items:center;gap:25px;height:70px;flex-shrink:0;padding:0 4vw;border-bottom:1px solid #23372e30}
+#floorplan-dialog h2{font:400 23px/1.5 var(--serif-zh);margin:0}
+#floorplan-dialog header button{font-size:12px;padding:14px 0;white-space:nowrap}
+.floorplan-tools{display:flex;align-items:center;gap:25px;min-height:60px;padding:8px 4vw;flex-shrink:0;border-bottom:1px solid #23372e30}
+.floorplan-tools>div{display:flex;align-items:center;gap:7px}
+#floorplan-dialog .floorplan-tools button{padding:8px 14px;font-size:13px;border:1px solid #23372e30;min-width:42px}
+#floorplan-dialog .floorplan-tools button[aria-pressed=true]{background:#23372e;color:#f1eee7}
+.floorplan-tools>span{font-size:11px;opacity:.5;margin-left:auto}
+.floorplan-scroll{flex:1;min-height:0;overflow:auto;background:#e3e3da;padding:15px;overscroll-behavior:contain;scrollbar-color:#a3aa9e #e3e3da}
+.floorplan-canvas{margin:0 auto;background:#fff;box-shadow:0 2px 20px #23372e15}
+.floorplan-canvas img{display:block;width:100%;height:100%;user-select:none}
+.floorplan-scroll.is-zoomed{cursor:grab}.floorplan-scroll.is-zoomed:active{cursor:grabbing}
+@media(max-width:700px){.floorplan-content{margin-top:3vh}.floorplan-heading{display:block;margin-bottom:2vh}.floorplan-heading .h1-zh{font-size:7vw!important}.floorplan-heading>p{font-size:10px;margin-top:1.5vh;line-height:1.7}.floorplan-pair{gap:3vw}.floorplan-card-heading{display:block;margin-bottom:1vh}.floorplan-card-heading h3{font-size:18px}.floorplan-card-heading .meta{font-size:7px;letter-spacing:.03em}.floorplan-card>button{height:44vw;max-height:290px}.floorplan-card>button>span{font-size:8px;bottom:5px;right:5px;padding:4px}#floorplan-dialog header{height:60px;padding:0 5vw;gap:15px}#floorplan-dialog h2{font-size:18px}#floorplan-dialog header button{font-size:10px}.floorplan-tools{min-height:60px;padding:8px 4vw;gap:12px;flex-wrap:wrap}#floorplan-dialog .floorplan-tools button{font-size:11px;padding:7px 9px;min-width:33px}.floorplan-tools>span{display:none}}
