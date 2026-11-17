@@ -25,7 +25,7 @@
     dialog.querySelector('#intent-browser-title').textContent = titles[mode] || '';
     if (mode === 'original') renderNarrative();
     else if (mode === 'life') {
-      nav.innerHTML = `<button type="button" data-area="all" aria-pressed="true">全部空间<sup>139</sup></button>${data.life.items.map((area,i) => `<button type="button" data-area="${i}" aria-pressed="false">${esc(area.title)}<sup>${area.images.length}</sup></button>`).join('')}`;
+      nav.innerHTML = `<button type="button" data-area="all" aria-pressed="true">全部空间<sup>${data.life.items.reduce((sum,area)=>sum+area.images.length,0)}</sup></button>${data.life.items.map((area,i) => `<button type="button" data-area="${i}" aria-pressed="false">${esc(area.title)}<sup>${area.images.length}</sup></button>`).join('')}`;
       renderLife('all');
     } else renderProcess(mode);
     if (!dialog.open) dialog.showModal();
