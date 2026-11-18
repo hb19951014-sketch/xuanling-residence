@@ -5,14 +5,14 @@
   const dialog = document.createElement('dialog');
   dialog.id = 'floorplan-dialog';
   dialog.setAttribute('aria-labelledby', 'floorplan-dialog-title');
-  dialog.innerHTML = '<header><h2 id="floorplan-dialog-title"></h2><button type="button" data-plan-close>返回方案 ×</button></header><div class="floorplan-tools"><div><button type="button" data-plan-floor="0">一层</button><button type="button" data-plan-floor="1">二层</button></div><div><button type="button" data-plan-zoom="-0.5" aria-label="缩小平面图">−</button><button type="button" data-plan-reset aria-label="恢复全图">100%</button><button type="button" data-plan-zoom="0.5" aria-label="放大平面图">＋</button></div><span>放大后可拖动或滚动查看</span></div><div class="floorplan-scroll"><div class="floorplan-canvas"><img alt="" draggable="false"></div></div>';
+  dialog.innerHTML = '<header><h2 id="floorplan-dialog-title"></h2><button type="button" data-plan-close>返回方案 ×</button></header><div class="floorplan-tools"><div><button type="button" data-plan-zoom="-0.5" aria-label="缩小平面图">−</button><button type="button" data-plan-reset aria-label="恢复全图">100%</button><button type="button" data-plan-zoom="0.5" aria-label="放大平面图">＋</button></div><span>放大后可拖动或滚动查看</span></div><div class="floorplan-scroll"><div class="floorplan-canvas"><img alt="" draggable="false"></div></div>';
   document.body.append(dialog);
   const viewport = dialog.querySelector('.floorplan-scroll');
   const canvas = dialog.querySelector('.floorplan-canvas');
   const image = canvas.querySelector('img');
   function resize() {
-    const floor = schemes[schemeIndex].floors[floorIndex];
-    const aspect = floor.width / floor.height;
+    const scheme = schemes[schemeIndex];
+    const aspect = scheme.combinedWidth / scheme.combinedHeight;
     baseWidth = Math.max(1, Math.min(viewport.clientWidth - 30, (viewport.clientHeight - 30) * aspect));
     baseHeight = baseWidth / aspect;
     canvas.style.width = `${Math.round(baseWidth * scale)}px`;
@@ -23,11 +23,11 @@
   function showFloor(index) {
     floorIndex = index;
     scale = 1;
-    const scheme = schemes[schemeIndex], floor = scheme.floors[floorIndex];
-    image.src = floor.src;
-    image.alt = scheme.name + ' · ' + floor.title + '彩色平面';
+    const scheme = schemes[schemeIndex];
+    image.src = scheme.combined;
+    image.alt = scheme.name + ' · 彩色平面';
     dialog.querySelector('h2').textContent = image.alt;
-    dialog.querySelectorAll('[data-plan-floor]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.planFloor) === floorIndex)));
+    
     requestAnimationFrame(() => { resize(); viewport.scrollTop = viewport.scrollLeft = 0; });
   }
   window.openFloorplan = function(scheme, floor) {
